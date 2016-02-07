@@ -5,7 +5,7 @@ ini_set('display_errors', '1');
 include("data_model/model.php");
 
 $r = new Database_Reader;
-$r->get_registration("kevin@kevinzuern.com");
+$r->get_registrations("kevin@kevinzuern.com");
 
  ?>
 <!DOCTYPE html>
