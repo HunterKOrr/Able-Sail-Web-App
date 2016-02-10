@@ -1,3 +1,16 @@
+<<<<<<< HEAD:index.php
+<?php 
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+
+include("data_model/model.php");
+
+$r = new Database_Reader;
+$r->get_registrations("kevin@kevinzuern.com");
+
+ ?>
+=======
+>>>>>>> 9f243be92874b38893c65083a1af2090579fc0b1:demoFiles/register.php
 <!DOCTYPE html>
 <html lang="en">
 <head>
