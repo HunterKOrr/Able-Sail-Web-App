@@ -1,6 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-		// Get form information and store within variable
+		
+	// Get form information and store within variable
 	$username = ($_POST["username"]);
 	$email = ($_POST["email"]);
 	$password = ($_POST["password"]);
@@ -54,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			<input class="form-control" type="email" name="email">
 		</div>
 		<div class="form-group">
-			<input type="submit" class="btn btn-primary form-control">
+			<button type="button" id="goButton" onclick="textFilled(username, password);" class="btn btn-primary btn-lg btn-block"><a href="registerFunction();">No</button>
 		</div>
 
 		<h3 id="results"><h3>

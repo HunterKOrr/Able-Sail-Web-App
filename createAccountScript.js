@@ -42,7 +42,9 @@ function update_css_class(field, class_index) {
 
 // not working properly
 function finalValidate(field1, output) {
-    checkName = isEmpty('username');
+    checkName = isEmpty(document.getElementById(field1).username);
+    checkPass = isEmpty(document.getElementById(field1).password);
+    checkMatch = comparePass(document.getElementById(field1).username, document.getElementById(field1).password, output);
 	
     errorList = '';
     if (!(checkName)) {
@@ -54,7 +56,7 @@ function finalValidate(field1, output) {
 	if (!(checkMatch)) {
 		errorList += 'Passwords do not match<br />';
 	}
-    if (errorList) {
+    if (errorList.length != 0) {
         document.getElementById(output).innerHTML = errorList;
         return false;
     } else {

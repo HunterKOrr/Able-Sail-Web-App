@@ -1,40 +1,22 @@
 <?php
- 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-        session_start();
-        $user = $_POST['username'];
-        $password = $_POST['exPass'];
+        //get inforation stored within variables
+        $username = $_POST['username'];
+        $password = $_POST['password'];
         
-        $dbname = 'propheis_ablesail';
-        $server = 'kevinzuern.com';
-        $dbUser = 'propheis_able';
-        $dbPass = 'Ablesail';
-
-
-        mysql_connect($server, $dbUser, $dbPass) or DIE('Connection to host isailed, perhaps the service is down!');
-        mysql_select_db($dbname) or DIE('Database name is not available!');
-
-        $user=mysql_real_escape_string($_POST['username']); 
-        $password=md5(mysql_real_escape_string($_POST['exPass'])); 
+        //include helper functions
+        include("./data_model/model.php");
         
-        //checks if user is in database
-        $query = "SELECT ID FROM user WHERE username='$user' and password='$password'";
-        $res = mysql_query($query);
-        $rows = mysql_num_rows($res);
-        if ($rows==1){
-            $_SESSION['username'] = $_POST['username'];
-            header("Location: updateInfo.html");
-        }
+        $model = new Database_Reader;
 
-        else{
+        //if valid user, contiune to next page
+        if($model->valid_user($username, $password) === true){
+            header('Location: updateInfo.html');
+        };
             echo "Username and Password not found";
             header("Location: loginCreate.html");
-            // TODO - replace message with redirection to login page
-            //  header("Location: securedpage.php");
         }
-
-    }
 
     ?>
     
